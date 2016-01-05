@@ -9,9 +9,13 @@ module.exports 	= function (){
 	
 	
 function greetUser(args,done){
-	var str = "Hello " ;
-	if (args.user != undefined)
-		str += args.user;
+	var str = "";
+	
+	if(args.key != undefined){
+		str = "Hello " ;
+		if(args.user != undefined)
+			str += args.user;
+	}
 	done(null,{data:str})
 }
 	

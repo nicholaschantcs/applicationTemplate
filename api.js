@@ -7,9 +7,11 @@ module.exports = function api( options ) {
   this.add( 'role:api,path:greet', function( args, done ) {
     this.act( {role:'greetAPI',
       cmd:   greet_ops[args.operation],
-      user :args.user,
+      user:args.user,
+	  key:args.key,	
     }, done )
   })
+  
   
   this.add('init:api', function( args, done ) {
 	  this.act('role:web',{use:{

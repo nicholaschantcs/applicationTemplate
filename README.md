@@ -32,7 +32,7 @@ Application Template for Node/Angular/Seneca stack
 ```
 Functions
 1. greetUser()
-  - gets text input from view and returns callback to the API at /api/greet/greetUser?user="USERNAME"
+  - gets text input from view and returns callback to the API at /api/greet/greetUser?key=&user=USERNAME
 2. displayRandomNumber()
   - generate a random number and returns callback to the API at /api/greet/displayRandomNumber
 ```

@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var seneca 			= require('seneca')( { timeout: 99999});
+var seneca = require('seneca')( { timeout: 99999});
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -30,6 +30,14 @@ app.use(seneca.export('web'));
 
 app.use('/', routes);
 app.use('/users', users);
+
+
+app.post('/greetUsers', function(req, res) {
+	seneca.act({role:'greetAPI', cmd:'greetUser',user:req.body,key:""},function(args,done){
+	  res.send(done.data);
+	  res.end();
+	})
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
