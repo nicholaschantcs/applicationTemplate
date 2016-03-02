@@ -10,14 +10,57 @@
 	<script src="/javascripts/mainController.js"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
+  <div class="container-fluid">
+    <h1>My <%= title %> App with Seneca & Angular with Authentication</h1>
     <p>Welcome to <%= title %> template</p>
-	 <div ng-controller='mainCtrl'>
-		<p>Name:<input type="text" ng-model="nameInput" placeholder="name"/></p>
+	 <div ng-controller='mainCtrl' class="well">
+	 <div class="form-group">
+		<label for="nameInput">Name:</label><input class="form-control" type="text" id="nameInput" ng-model="nameInput" placeholder="name"/>
 		<h3>{{greetings}}</h3>
 		<h3>{{randomNumber}}</h3>
-		 <input class="btn" type="button" ng-click="greetUser()" value="Greetings"/>
-		 <input class="btn" type="button" ng-click="generateRandomNumber()" value="Generate Random Number"/>
+		 <input class="btn btn-default" type="button" ng-click="greetUser()" value="Greetings"/>
+		 <input class="btn btn-default" type="button" ng-click="generateRandomNumber()" value="Generate Random Number"/>
+	 </div>
+		 
+	<div class="well" ng-hide="user">
+	 <form class="form-inline" method="POST", action="/auth/login">
+	  <div class="form-group">
+		<label class="sr-only" for="username">username</label>
+		<input type="text" class="form-control" name="username" placeholder="Username">
 	  </div>
+	  <div class="form-group">
+		<label class="sr-only" for="password">Password</label>
+		<input type="password" class="form-control" name="password" placeholder="Password">
+	  </div>
+	  <button type="submit" class="btn btn-default">Sign in</button>
+	 </form>
+ 	</div>
+		 
+	<div class="well" ng-show="user">
+	 <form class="form-inline" method="POST", action="/auth/logout">
+	  <div class="form-group">
+	  <p>Welcome {{user.nick}}</p>
+	  <button type="submit" class="btn btn-default">Logout</button>
+		 </div>
+	 </form>
+ 	</div>
+		 
+	 <div class="well">
+	 <form class="form-inline" method="POST", action="/auth/register">
+	 <small>Once you have registered, you will be logged in automatically and your authentication details will be saved on memory.</small>
+	 <p><small>You can't register a same username twice as it's unique.</small></p>
+	  <div class="form-group">
+		<label class="sr-only" for="username">username</label>
+		<input type="text" class="form-control" name="username" placeholder="Username">
+	  </div>
+	  <div class="form-group">
+		<label class="sr-only" for="password">Password</label>
+		<input type="password" class="form-control" name="password" placeholder="Password">
+	  </div>
+	  <button type="submit" class="btn btn-default">Register</button>
+	 </form>
+	 </div>
+ </div>
+ </div>
   </body>
 </html>

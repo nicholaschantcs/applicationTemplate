@@ -1,6 +1,22 @@
 "use strict";
 module.exports = function api( options ) {
+	var authOption = require("./options");
 	this.use('ng-web')
+	this.use('user')
+	this.use('auth',authOption)
+	
+  var u = this.pin({
+      role: 'user',
+      cmd: '*'
+    })
+   u.register({
+      nick: "demo",
+      name: "demo",
+      email: "demo@me.com",
+      active: true,
+      username: "demo",
+      password: "password",
+    })
 
   var greet_ops   = { greetUser:'greetUser',displayRandomNumber:'displayRandomNumber'}
 

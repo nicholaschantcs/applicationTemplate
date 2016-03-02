@@ -33,6 +33,7 @@ app.use('/users', users);
 
 
 app.post('/greetUsers', function(req, res) {
+	console.log(req.seneca.user);
 	seneca.act({role:'greetAPI', cmd:'greetUser',user:req.body,key:""},function(args,done){
 	  res.send(done.data);
 	  res.end();
