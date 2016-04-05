@@ -1,0 +1,18 @@
+frontend:
+  build: ../site/
+  container_name: site
+  env_file: env
+  ports:
+  - 3000:3000
+greet:
+  build: ../services/greet/
+  container_name: greetService
+  env_file: env
+  ports:
+  - 9001:9001
+number:
+  build: ../services/number/
+  container_name: numberService
+  env_file: env
+  ports:
+  - 9002:9002

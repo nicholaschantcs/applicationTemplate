@@ -1,12 +1,12 @@
 "use strict";
-module.exports 	= function (){
+module.exports 	= function (options){
 	var seneca = this;
+    var common = options.common;
+	var logger = options.logger;
 	/**
 	* registering roles for Seneca Microservices
 	*/
-	this.add({role:'greetAPI', cmd:'greetUser'},greetUser)
-	this.add({role:'greetAPI', cmd:'displayRandomNumber'},displayRandomNumber)
-	
+	this.add({role:'greet', cmd:'greetUser'},greetUser)
 	
 function greetUser(args,done){
 	var str = "";
@@ -17,12 +17,6 @@ function greetUser(args,done){
 			str += args.user;
 	}
 	done(null,{data:str})
-}
-	
-function displayRandomNumber(args,done){
-	var random = Math.random();
-	
-	done(null,{data:random})
 }
 
 }

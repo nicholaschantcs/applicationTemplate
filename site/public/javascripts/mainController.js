@@ -8,9 +8,7 @@ angular
 			if(newV != undefined)
 			$scope.greetings = "Welcome " + newV;
 		})
-		
 		var key = makeid();
-	
 	$http.get('/auth/user').then(function(callback){
 		$scope.user = callback.data.user;
 		if($scope.user)
@@ -28,7 +26,7 @@ angular
 		}
 
 		$scope.generateRandomNumber = function(){
-				appAPI.get('greet/displayRandomNumber',function(data){
+				appAPI.get('number/displayRandomNumber',function(data){
 					$scope.randomNumber =  data.data;
 			})
 		}
@@ -41,6 +39,5 @@ function makeid()
 
     for( var i=0; i < 10; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
-
     return text;
 }

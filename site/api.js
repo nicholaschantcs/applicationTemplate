@@ -18,11 +18,20 @@ module.exports = function api( options ) {
       password: "password",
     })
 
-  var greet_ops   = { greetUser:'greetUser',displayRandomNumber:'displayRandomNumber'}
+  var greet_ops   = { greetUser:'greetUser'}
+  var number_ops   = { displayRandomNumber:'displayRandomNumber'}
 
   this.add( 'role:api,path:greet', function( args, done ) {
-    this.act( {role:'greetAPI',
+    this.act( {role:'greet',
       cmd:   greet_ops[args.operation],
+      user:args.user,
+	  key:args.key,	
+    }, done )
+  })
+  
+this.add( 'role:api,path:number', function( args, done ) {
+    this.act( {role:'number',
+      cmd:   number_ops[args.operation],
       user:args.user,
 	  key:args.key,	
     }, done )
@@ -35,6 +44,7 @@ module.exports = function api( options ) {
       pin:    'role:api,path:*',
       map: {
         greet: { GET:true, suffix:'/:operation' },
+        number: { GET:true, suffix:'/:operation' },
       }
     }})
     done(null,{data:"success"})

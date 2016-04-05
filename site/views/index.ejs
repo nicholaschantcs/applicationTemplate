@@ -17,9 +17,9 @@
 	 <div class="form-group">
 		<label for="nameInput">Name:</label><input class="form-control" type="text" id="nameInput" ng-model="nameInput" placeholder="name"/>
 		<h3>{{greetings}}</h3>
-		<h3>{{randomNumber}}</h3>
+		<h3 ng-show="randomNumber">This is your lucky number {{randomNumber}}, have a nice day!</h3>
 		 <input class="btn btn-default" type="button" ng-click="greetUser()" value="Greetings"/>
-		 <input class="btn btn-default" type="button" ng-click="generateRandomNumber()" value="Generate Random Number"/>
+		 <input class="btn btn-default" type="button" ng-click="generateRandomNumber()" value="Feeling Lucky?"/>
 	 </div>
 		 
 	<div class="well" ng-hide="user">
