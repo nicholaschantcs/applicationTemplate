@@ -1,0 +1,14 @@
+{
+  "name": "UserService",
+  "description": "user service",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "mongo-express": "^0.30.43",
+    "mongodb": "^2.1.14",
+    "nid": "^0.3.2",
+    "seneca": "^0.9.3",
+    "underscore": "^1.8.3",
+    "winston": "^2.2.0"
+  }
+}
