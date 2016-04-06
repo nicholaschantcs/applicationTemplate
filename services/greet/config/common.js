@@ -10,6 +10,7 @@ module.exports = {
    */
   GREET_PORT: 9001,
   NUMBER_PORT: 9002,
+  USER_PORT: 9003,
 
   /**
    * Winston Logging Configurations
