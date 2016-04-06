@@ -1,6 +1,6 @@
 {
-  "name": "GreetService",
-  "description": "greet service",
+  "name": "NumberService",
+  "description": "number service",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
