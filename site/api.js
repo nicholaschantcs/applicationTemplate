@@ -1,7 +1,7 @@
 "use strict";
 module.exports = function api( options ) {
 	var authOption = require("./options");
-	this.use('ng-web')
+	this.use('./ng-web')
 	this.use('user')
 	this.use('auth',authOption)
 	
@@ -17,7 +17,7 @@ module.exports = function api( options ) {
       username: "demo",
       password: "password",
     })
-
+   
   var greet_ops   = { greetUser:'greetUser'}
   var number_ops   = { displayRandomNumber:'displayRandomNumber'}
 
