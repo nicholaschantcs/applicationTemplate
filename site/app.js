@@ -52,7 +52,7 @@ app.post('/greetUsers', function(req, res) {
   seneca.act({
     role: 'greet',
     cmd: 'greetUser',
-    user: req.body,
+    user: req.body.user,
     key: ""
   }, function(args, done) {
     res.send(done.data);

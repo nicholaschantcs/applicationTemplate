@@ -25,7 +25,6 @@ module.exports = function api( options ) {
     this.act( {role:'greet',
       cmd:   greet_ops[args.operation],
       user:args.user,
-	  key:args.key,	
     }, done )
   })
   
@@ -33,7 +32,6 @@ this.add( 'role:api,path:number', function( args, done ) {
     this.act( {role:'number',
       cmd:   number_ops[args.operation],
       user:args.user,
-	  key:args.key,	
     }, done )
   })
   
