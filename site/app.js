@@ -8,33 +8,23 @@ var logger = require('./config/logger');
 var seneca = require('seneca')({
   timeout: common.senecaTimeout
 });
-var routes = require('./routes/index');
-var users = require('./routes/users');
+seneca.use('api');
+
 
 var host = process.env.PROXY_HOST || common.host;
 var app = express();
 
+var init= {
+	seneca:seneca,
+	logger:logger,
+	app:app,
+	common:common,
+	host:host
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-// set seneca
-seneca
-  .use('api')
-  .client({
-    host: host,
-    port: process.env.GREET_PORT || common.GREET_PORT,
-    pin: {
-      role: "greet"
-    }
-  })
-  .client({
-    host: host,
-    port: process.env.NUMBER_PORT || common.NUMBER_PORT,
-    pin: {
-      role: "number"
-    }
-  })
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -45,20 +35,9 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(seneca.export('web'));
-app.use('/', routes);
-app.use('/users', users);
+var routes = require('./routes/index')(init);
+var users = require('./routes/users')(init);
 
-app.post('/greetUsers', function(req, res) {
-  seneca.act({
-    role: 'greet',
-    cmd: 'greetUser',
-    user: req.body.user,
-    key: ""
-  }, function(args, done) {
-    res.send(done.data);
-    res.end();
-  })
-});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

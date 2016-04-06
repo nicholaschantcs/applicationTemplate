@@ -5,19 +5,6 @@ module.exports = function api( options ) {
 	this.use('user')
 	this.use('auth',authOption)
 	
-  var u = this.pin({
-      role: 'user',
-      cmd: '*'
-    })
-   u.register({
-      nick: "demo",
-      name: "demo",
-      email: "demo@me.com",
-      active: true,
-      username: "demo",
-      password: "password",
-    })
-   
   var greet_ops   = { greetUser:'greetUser'}
   var number_ops   = { displayRandomNumber:'displayRandomNumber'}
 
