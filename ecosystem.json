@@ -13,6 +13,16 @@
     "log_date_format": "YYY-MM-DD HH:mm Z"
   },
    {
+    "name": "user server",
+    "script": "./services/user/service.js",
+    "log_date_format": "YYY-MM-DD HH:mm Z"
+  },
+   {
+    "name": "mongoUI",
+    "script": "./services/user/node_modules/mongo-express/app.js",
+    "log_date_format": "YYY-MM-DD HH:mm Z"
+  },
+   {
     "name": "node server",
     "script": "./site/bin/www",
     "log_date_format": "YYY-MM-DD HH:mm Z"
