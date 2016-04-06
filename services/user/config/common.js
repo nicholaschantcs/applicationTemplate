@@ -20,7 +20,7 @@ module.exports = {
   /**
    * mongoDB Configurations
    */
-  mongoDBConnection: 'mongodb://127.0.0.1:27017/applicationTemplate',
+  mongoDBConnection: 'mongodb://'+ (process.env.PROXY_HOST || 'localhost:27017') + '/applicationTemplate',
   /* LOCALHOST */
   mongopath: '/data/backup/',
   getEnvironment: function() {
