@@ -16,3 +16,9 @@ number:
   env_file: env
   ports:
   - 9002:9002
+user:
+  build: ../services/user/
+  container_name: userService
+  env_file: env
+  ports:
+  - 9003:9003
