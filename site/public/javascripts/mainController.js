@@ -1,12 +1,12 @@
 angular
-  .module('mainApp', [])
+  .module('mainApp', ["ui.bootstrap"])
   .service('appAPI', seneca.ng.web({
     prefix: '/api/'
   }))
   .service('appPubSub', seneca.ng.pubsub())
   .controller('mainCtrl', function($scope, $http, appAPI, appPubSub) {
     $scope.greetings = "Welcome";
-	
+	$scope.error = [];
     $scope.$watch('nameInput', function(newV, oldV) {
       if (newV != undefined)
         $scope.greetings = "Welcome " + newV;
@@ -37,8 +37,6 @@ angular
       })
     }
 	
-
-
     $scope.register = function() {
 	   var encrpytedText = CryptoJS.AES.encrypt($scope.registerPassword, "TheC!tySecret");
 	   var hashedPassword = encrpytedText.toString();
@@ -47,15 +45,26 @@ angular
         username: $scope.registerUsername,
         password: $scope.registerPassword,
       }
-      $http.post('auth/register',newUser)
-        .then(function(success) {
-		  newUser.password = hashedPassword;
-          $http.post('/users/register', {user:newUser}).then(function(callback) {
-			window.location="/";
-		  })
-        })
+	  if(Object.keys($scope.error["password"]).length == 0)
+		  $http.post('auth/register',newUser)
+			.then(function(success) {
+			  newUser.password = hashedPassword;
+			  $http.post('/users/register', {user:newUser}).then(function(callback) {
+				window.location="/";
+			  })
+			})
     }
-
+	$scope.$watch('registerPassword',function(newV,oldV){
+		if(newV){
+			$scope.error["password"] = {};
+			if(newV.length < 5 ){
+			  $scope.error["password"].class = "has-danger";
+			  $scope.error["password"].text = "password must be at least 5 characters long";
+			  $scope.registerPassword
+			}
+		}
+	})
+	
     $scope.login = function() {
       $http.post("auth/login", {
         username: $scope.username,

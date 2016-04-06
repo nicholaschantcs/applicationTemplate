@@ -3,11 +3,14 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-	<link rel="stylesheet" href="/javascripts/bootstrap.min.css">
-	<link rel="stylesheet" href="/javascripts/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap.css">
     <script type="text/javascript" src="./javascripts/crypto-js.js"></script>
 	<script src="/seneca/init.js"></script>
+	<script src="/javascripts/jquery-2.1.3.js"></script>
+	<script src="/javascripts/tether.js"></script>
+	<script src="/javascripts/bootstrap.js"></script>
 	<script src="/javascripts/angular.min.js"></script>
+	<script src="/javascripts/ui-bootstrap-tpls-1.3.1.min.js"></script>
 	<script src="/javascripts/mainController.js"></script>
   </head>
   <body>
@@ -55,9 +58,9 @@
 		<label class="sr-only" for="username">username</label>
 		<input type="text" class="form-control" ng-model="registerUsername" placeholder="Username">
 	  </div>
-	  <div class="form-group">
-		<label class="sr-only" for="password">Password</label>
-		<input type="password" class="form-control" ng-model="registerPassword" placeholder="Password">
+	  <div class="form-group {{error['password'].class}}">
+		<label class="form-control-label sr-only" for="password">Password</label>
+		<input type="password" class="form-control form-control-danger" ng-model="registerPassword" placeholder="Password" tooltip-placement="right" uib-tooltip="{{error['password'].text}}">
 	  </div>
 	  <button type="submit" class="btn btn-default">Register</button>
 	 </form>
