@@ -11,7 +11,7 @@ var seneca = require('seneca')({
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-var host = process.env_PROXY_HOST || common.host;
+var host = process.env.PROXY_HOST || common.host;
 var app = express();
 
 // view engine setup
