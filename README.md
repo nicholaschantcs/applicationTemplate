@@ -4,7 +4,12 @@
 
 ## Overview
 
-This application is a template for the MEAN stack ( Mongo , Express , Angular , Node ) with backend senecaJS microservices. 
+This application is a template for the MEAN stack ( Mongo , Express , Angular , Node ) with backend senecaJS microservices. There are currently 2 branches in this project.
+
+|Branch|Details|
+|---|---|
+|master|contains User service which uses mongoDB, so you will need to have monogoDB installed locally / remotely|
+|BranchWithoutMongo | without the implementation of User service, can spin the app right away with Node and NPM |
 
 <dl>
   <dt>Frontend </dt>
