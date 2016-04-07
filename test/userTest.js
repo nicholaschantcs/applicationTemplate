@@ -22,7 +22,22 @@ it('should run getAllUser from user service', function(done){
 		done();
 	})
 });
-
+	
+it('should run saveUser from user service', function(done){
+	seneca.act({role:'userManager', cmd:'saveUser',user:{username:"test",password:"test"}},function(args,cb){
+		console.log(cb);
+		expect(cb.ok).to.equals(1);
+		done();
+	})
+});
+	
+it('should run saveUser from user service', function(done){
+	seneca.act({role:'userManager', cmd:'getAllUser'},function(args,cb){
+		console.log(cb);
+		expect(cb.length).to.not.equals(0);
+		done();
+	})
+});
 
 	
 })
