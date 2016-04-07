@@ -15,7 +15,7 @@ seneca.use('../services/user/UserService.js',init);
 	
 describe('A User Microservice', function() {
 	
-it('should run displayRandomNumber from number service', function(done){
+it('should run getAllUser from user service', function(done){
 	seneca.act({role:'userManager', cmd:'getAllUser'},function(args,cb){
 		console.log(cb);
 		expect(cb).to.not.be.null;
